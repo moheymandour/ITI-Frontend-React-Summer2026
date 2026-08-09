@@ -19,4 +19,4 @@ Covered topics:
 ## About Me
 Computer Science student at Tanta University, currently training in Frontend Development.
 
-[Connect with me on LinkedIn](www.linkedin.com/in/mohey-mandour309)
+[www.linkedin.com/in/mohey-mandour309]
