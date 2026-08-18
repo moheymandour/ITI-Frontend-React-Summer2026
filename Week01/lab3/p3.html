@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <title>Social</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      #container {
+        width: 700;
+        height: 600;
+        background-color: white;
+        margin: 50px auto;
+        position: relative;
+        border: 2px solid black;
+        text-align: center;
+      }
+
+      #social {
+        width: 200px;
+        height: 100px;
+      }
+
+      #face button {
+        position: absolute;
+        top: 50;
+        left: 150;
+        color: white;
+        background-color: #3b5998;
+        padding: 10px 20px 10px 40px;
+        border: none;
+      }
+
+      #X button {
+        position: absolute;
+        top: 50;
+        right: 150;
+        color: white;
+        background-color: #1da1f2;
+        padding: 10px 20px 10px 40px;
+        border: none;
+      }
+
+      #or {
+        background-color: lightgray;
+        width: 40px;
+        height: 40px;
+        vertical-align: middle;
+        border-radius: 50%;
+        padding-top: 7px;
+        margin: 20px auto;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        display: block;
+        margin: 20px auto;
+        width: 400px;
+        padding: 10px;
+        border: 3px solid lightgray;
+      }
+      .options {
+        display: inline-block;
+        margin-bottom: 20px;
+        color: darkgray;
+      }
+      span {
+        margin-right: 40px;
+      }
+
+      #login {
+        background-color: #3b5998;
+        color: white;
+        padding: 10px 178px;
+        border: none;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="social">
+        <div id="face"><button>Login to Facebook</button></div>
+        <div id="X"><button>Login to Twitter</button></div>
+      </div>
+
+      <div id="or">Or</div>
+
+      <form>
+        <input name="Username" type="text" />
+        <input name="password" type="password" />
+      </form>
+
+      <div class="options">
+        <input name="Keep me signed in" type="checkbox" />
+        <span>Keep me signed in</span>
+        <a href="#" style="color: darkgray">Forgot Your Password?</a>
+      </div>
+      <div>
+        <button id="login">Login</button>
+      </div>
+      <div id="sign">Not a member ? <a href="#">Sign up now!</a></div>
+    </div>
+  </body>
+</html>
