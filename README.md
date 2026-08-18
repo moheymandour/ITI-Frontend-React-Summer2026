@@ -22,11 +22,11 @@ Covered topics:
 
 | Lab | Topic |
 |-----|-------|
-| [Lab1](./Lab1) | JS Fundamentals — variables, type checking, conditionals, loops, number formatting |
-| [Lab2](./Lab2) | Conditionals, switch statements, loops & validation |
-| [Lab3](./Lab3) | Arrays — sorting, filtering, objects |
-| [Lab4](./Lab4) | DOM Manipulation — to-do list, slideshow, profile card |
-| [Lab5](./Lab5) | Popup windows & dynamic styling |
+| [Lab1](./Week02/Lab1) | JS Fundamentals — variables, type checking, conditionals, loops, number formatting |
+| [Lab2](./Week02/Lab2) | Conditionals, switch statements, loops & validation |
+| [Lab3](./Week02/Lab3) | Arrays — sorting, filtering, objects |
+| [Lab4](./Week02/Lab4) | DOM Manipulation — to-do list, slideshow, profile card |
+| [Lab5](./Week02/Lab5) | Popup windows & dynamic styling |
 
 
 ## About Me
