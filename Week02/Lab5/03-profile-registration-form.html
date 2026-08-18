@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Form</title>
+  </head>
+  <body>
+    <div>
+      <div id="enterinfo">
+        <label for="name">Enter your name: </label>
+        <input type="text" name="username" id="username" value="" />
+        <br />
+        <br />
+        <br />
+        <label for="age">Enter your age:</label>
+        <input type="text" name="userage" id="userage" value="" />
+      </div>
+      <div id="selectgender">
+        <p>Select your gender:</p>
+        <input type="radio" name="gender" id="male" value="male" />
+        <label for="male"><img src="maleAvatar.jpg" /></label>
+
+        <input type="radio" name="gender" id="female" value="female" />
+        <label for="female"><img src="femaleAvatar.jpg" /></label>
+      </div>
+      <div id="selectcolor">
+        <label for="colors">Select your favorite color:</label>
+        <select name="colors" id="colors">
+          <option value="red">Red</option>
+          <option value="green">Green</option>
+          <option value="blue">Blue</option>
+          <option value="yellow">Yellow</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <button id="reg">Register</button>
+    </div>
+
+    <script>
+      var reg = document.getElementById("reg");
+      reg.addEventListener("click", function () {
+        var name = document.getElementById("username").value;
+        var age = document.getElementById("userage").value;
+        var color = document.getElementById("colors").value;
+        var gender = document.getElementsByName("gender");
+        var selgender = "";
+
+        for (var i = 0; i < gender.length; i++) {
+          if (gender[i].checked) {
+            selgender = gender[i].value;
+            break;
+          }
+        }
+        if (name === "" || age === "" || selgender === "") {
+          alert("Please! Enter your empty fields first");
+        } else {
+          var infoPage = window.open("", "_blank");
+
+          if (selgender === "male") {
+            infoPage.document.write("<img src='maleAvatar.jpg'>");
+          } else {
+            infoPage.document.write("<img src='femaleAvatar.jpg'>");
+          }
+          infoPage.document.write(
+            "<h2>Welcome <span style='color:" +
+              color +
+              ";'>" +
+              name +
+              "</span></h2>",
+          );
+        }
+      });
+    </script>
+  </body>
+</html>

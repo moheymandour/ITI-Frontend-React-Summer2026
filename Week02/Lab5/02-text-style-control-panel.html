@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        border: 0;
+        box-sizing: border-box;
+      }
+
+      table {
+        margin-top: 30px;
+      }
+      th,
+      td {
+        border: 2px solid gray;
+
+        vertical-align: top;
+        text-align: left;
+        padding: 8px;
+      }
+
+      label {
+        display: block;
+        text-align: left;
+      }
+
+      #text {
+        width: 50%;
+        margin: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <p id="text">
+        Here is a paragraph of text that has various alignment characteristics
+        that can be changed dynamically.<br />
+        Click the radio buttons below to view combinations of text style
+        settings.
+      </p>
+
+      <table id="tab">
+        <thead>
+          <tr id="head">
+            <th>fontFamily</th>
+            <th>textAlign</th>
+            <th>lineHeight</th>
+            <th>letterSpacing</th>
+            <th>textIndent</th>
+            <th>textTransform</th>
+            <th>textDecoration</th>
+            <th>textBorder</th>
+            <th>borderColor</th>
+          </tr>
+        </thead>
+        <tr>
+          <!-- ================== -->
+          <td>
+            <label
+              ><input
+                type="radio"
+                name="fontFamily"
+                value="Arial"
+                onclick="changeFont(this.value)"
+                checked
+              />Arial</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="fontFamily"
+                value="courier"
+                onclick="changeFont(this.value)"
+              />courier</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="fontFamily"
+                value="georgia"
+                onclick="changeFont(this.value)"
+              />georgia</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="fontFamily"
+                value="impact"
+                onclick="changeFont(this.value)"
+              />impact</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="fontFamily"
+                value="times new roman"
+                onclick="changeFont(this.value)"
+              />times new roman</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="fontFamily"
+                onclick="changeFont(this.value)"
+                value="verdana"
+              />verdana</label
+            >
+          </td>
+          <!-- ================== -->
+          <td>
+            <label
+              ><input
+                type="radio"
+                name="textAlign"
+                value="left"
+                onclick="changeAlign(this.value)"
+                checked
+              />left</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="textAlign"
+                value="center"
+                onclick="changeAlign(this.value)"
+              />center</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="textAlign"
+                value="right"
+                onclick="changeAlign(this.value)"
+              />right</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="textAlign"
+                value="justify"
+                onclick="changeAlign(this.value)"
+              />justify</label
+            >
+          </td>
+          <!-- ================== -->
+          <!-- ================== -->
+          <td>
+            <label
+              ><input
+                type="radio"
+                name="lineHeight"
+                value="normal"
+                onclick="changeLineHeight(this.value)"
+                checked
+              />normal</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="lineHeight"
+                value="10px"
+                onclick="changeLineHeight(this.value)"
+              />10px</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="lineHeight"
+                value="15px"
+                onclick="changeLineHeight(this.value)"
+              />15px</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="lineHeight"
+                value="1.5"
+                onclick="changeLineHeight(this.value)"
+              />1.5</label
+            >
+          </td>
+          <!-- ================== -->
+          <td>
+            <label
+              ><input
+                type="radio"
+                name="letterSpacing"
+                value="normal"
+                onclick="changeLetterSpace(this.value)"
+                checked
+              />normal</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="letterSpacing"
+                value="-1px"
+                onclick="changeLetterSpace(this.value)"
+              />-1px</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="letterSpacing"
+                value="2px"
+                onclick="changeLetterSpace(this.value)"
+              />2px</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="letterSpacing"
+                value="3px"
+                onclick="changeLetterSpace(this.value)"
+              />3px</label
+            >
+          </td>
+          <!-- ================== -->
+          <!-- ================== -->
+          <td>
+            <label
+              ><input
+                type="radio"
+                name="textIndent"
+                value="0px"
+                onclick="changeIndent(this.value)"
+                checked
+              />0px</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="textIndent"
+                value="5px"
+                onclick="changeIndent(this.value)"
+              />5px</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="textIndent"
+                value="15px"
+                onclick="changeIndent(this.value)"
+              />15px</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="textIndent"
+                value="25px"
+                onclick="changeIndent(this.value)"
+              />25px</label
+            >
+          </td>
+          <!-- ================== -->
+          <td>
+            <label
+              ><input
+                type="radio"
+                name="textTransform"
+                value="none"
+                onclick="changeTransform(this.value)"
+                checked
+              />none</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="textTransform"
+                value="capitalize"
+                onclick="changeTransform(this.value)"
+              />capitalize</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="textTransform"
+                value="uppercase"
+                onclick="changeTransform(this.value)"
+              />uppercase</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="textTransform"
+                value="lowercase"
+                onclick="changeTransform(this.value)"
+              />lowercase</label
+            >
+          </td>
+          <!-- ================== -->
+          <!-- ================== -->
+          <td>
+            <label
+              ><input
+                type="radio"
+                name="textDecoration"
+                value="none"
+                onclick="changeDeco(this.value)"
+                checked
+              />none</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="textDecoration"
+                value="line-through"
+                onclick="changeDeco(this.value)"
+              />line-through</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="textDecoration"
+                value="overline"
+                onclick="changeDeco(this.value)"
+              />overline</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="textDecoration"
+                value="underline"
+                onclick="changeDeco(this.value)"
+              />underline</label
+            >
+          </td>
+          <!-- ================== -->
+          <!-- ================== -->
+          <td>
+            <label
+              ><input
+                type="radio"
+                name="textBorder"
+                value="none"
+                onclick="changeBorder(this.value)"
+                checked
+              />none</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="textBorder"
+                value="dotted"
+                onclick="changeBorder(this.value)"
+              />dotted</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="textBorder"
+                value="double"
+                onclick="changeBorder(this.value)"
+              />double</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="textBorder"
+                value="groove"
+                onclick="changeBorder(this.value)"
+              />groove</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="textBorder"
+                value="dashed"
+                onclick="changeBorder(this.value)"
+              />dashed</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="textBorder"
+                value="insert"
+                onclick="changeBorder(this.value)"
+              />insert</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="textBorder"
+                value="solid"
+                onclick="changeBorder(this.value)"
+              />solid</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="textBorder"
+                value="outset"
+                onclick="changeBorder(this.value)"
+              />outset</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="textBorder"
+                value="ridge"
+                onclick="changeBorder(this.value)"
+              />ridge</label
+            >
+          </td>
+          <!-- ================== -->
+          <!-- ================== -->
+          <td>
+            <label
+              ><input
+                type="radio"
+                name="borderColor"
+                value="none"
+                onclick="changeBdColor(this.value)"
+                checked
+              />none</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="borderColor"
+                value="pink"
+                onclick="changeBdColor(this.value)"
+              />pink</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="borderColor"
+                value="red"
+                onclick="changeBdColor(this.value)"
+              />red</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="borderColor"
+                value="green"
+                onclick="changeBdColor(this.value)"
+              />green</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="borderColor"
+                value="blue"
+                onclick="changeBdColor(this.value)"
+              />blue</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="borderColor"
+                value="yellow"
+                onclick="changeBdColor(this.value)"
+              />yellow</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="borderColor"
+                value="purple"
+                onclick="changeBdColor(this.value)"
+              />purple</label
+            >
+          </td>
+          <!-- ================== -->
+        </tr>
+      </table>
+    </div>
+
+    <script>
+      var txt = document.getElementById("text");
+
+      function changeFont(value) {
+        txt.style.fontFamily = value;
+      }
+      function changeAlign(value) {
+        txt.style.textAlign = value;
+      }
+      function changeLineHeight(value) {
+        txt.style.lineHeight = value;
+      }
+      function changeLetterSpace(value) {
+        txt.style.letterSpacing = value;
+      }
+      function changeIndent(value) {
+        txt.style.textIndent = value;
+      }
+      function changeTransform(value) {
+        txt.style.textTransform = value;
+      }
+      function changeDeco(value) {
+        txt.style.textDecoration = value;
+      }
+      function changeBorder(value) {
+        txt.style.borderStyle = value;
+        txt.style.borderWidth = "10px";
+      }
+      function changeBdColor(value) {
+        txt.style.borderColor = value;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var sizearr = Number(prompt("What size of array you want?"));
+      var arr = [];
+
+      for (var i = 0; i < sizearr; i++) {
+        var values = prompt("Enter array value number " + (i + 1) + ":");
+        while (isNaN(values) || values.trim() === "") {
+          values = prompt(
+            "This is an Invalid Value!! Enter a numeric value number " +
+              (i + 1) +
+              ":",
+          );
+        }
+        arr.push(Number(values));
+      }
+
+      var display = true;
+      while (display) {
+        var choices = prompt(
+          "a: display array of original order\n" +
+            "b: display array with ascending order\n" +
+            "c: display array with descending order\n" +
+            "d: reversed version of original array\n" +
+            "e: display array with even numbers\n" +
+            "f: display array with divisible\n" +
+            "g: display array with discount\n" +
+            "h: display array with concated with ***\n",
+        );
+
+        switch (choices) {
+          case "a":
+            alert(arr);
+            break;
+
+          case "b":
+            var ascarr = arr.slice().sort(function (x, y) {
+              return x - y;
+            });
+            alert(ascarr);
+            break;
+
+          case "c":
+            var descarr = arr.slice().sort(function (x, y) {
+              return y - x;
+            });
+            alert(descarr);
+            break;
+          case "d":
+            var revarr = arr.slice().reverse();
+            alert(revarr);
+            break;
+
+          case "e":
+            var evennums = arr.filter(function (num) {
+              return num % 2 === 0;
+            });
+
+            if (evennums.length === 0) {
+              alert("There is no even numbers");
+            } else {
+              alert(evennums);
+            }
+            break;
+
+          case "f":
+            var divisiblenum = prompt("Enter a divisible number: ");
+            var divisiblearr = arr.filter(function (num) {
+              return num % divisiblenum === 0;
+            });
+
+            if (divisiblearr === 0) {
+              alert("No numbers are divisible by : " + divisiblenum);
+            } else {
+              alert(divisiblearr);
+            }
+            break;
+
+          case "g":
+            var discountarr = arr.filter(function (num) {
+              return num * 0.7 === 0;
+            });
+
+            alert(discountarr);
+            break;
+
+          case "h":
+            var conarr = arr.join("***");
+            alert(conarr);
+            break;
+
+          default:
+            alert("Invalid choice! Please choice from a to h");
+        }
+
+        var repagain = prompt("Do you want to repeate again? (yes / no)");
+
+        if (repagain === "yes" || repagain === "y") {
+          display = true;
+        } else {
+          display = false;
+        }
+      }
+    </script>
+  </body>
+</html>

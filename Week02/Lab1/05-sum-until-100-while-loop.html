@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var sum = 0;
+      var value = prompt("Enter a number: ");
+      while (value != 0 && sum <= 100) {
+        if (isNaN(value)) {
+          alert("Enter a valid number");
+        } else {
+          sum = sum + Number(value);
+        }
+        value = prompt("Enter a number: ");
+      }
+      alert("Total sum = " + sum);
+    </script>
+  </body>
+</html>

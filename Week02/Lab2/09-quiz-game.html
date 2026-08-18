@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var again;
+      do {
+        var score = 0;
+        var ques1 = prompt("What is the largest ocean on Earth?");
+        switch (ques1.trim().toLowerCase()) {
+          case "pacific":
+            score++;
+            break;
+        }
+        var ques2 = prompt(
+          "Which planet in our solar system is commonly known as the Red Planet?",
+        );
+        switch (ques2.trim().toLowerCase()) {
+          case "mars":
+            score++;
+            break;
+        }
+        var ques1 = prompt("What is the capital city of France?");
+        switch (ques2.trim().toLowerCase()) {
+          case "paris":
+            score++;
+            break;
+        }
+
+        console.log("Score : " + score + " / 3");
+        if (score >= 2) {
+          console.log("You Passed");
+        } else {
+          console.log("Try again");
+          again = prompt("Do you want to try again? (yes or no)");
+        }
+      } while (again && again.trim().tolowercase() === "yes");
+    </script>
+  </body>
+</html>

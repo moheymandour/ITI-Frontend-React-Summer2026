@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Card Editor</title>
+    <style>
+      body {
+        background-color: lightgray;
+        font-family: sans-serif;
+        display: flex;
+      }
+      #container {
+        background-color: white;
+        width: 400px;
+        /* height: 800px; */
+        text-align: center;
+        margin: 50px auto;
+        border-radius: 20px;
+        box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+      }
+
+      img {
+        width: 300px;
+        margin-top: 20px;
+      }
+
+      #name {
+        font-weight: bold;
+        font-size: 30px;
+      }
+
+      #edname,
+      #chcolor,
+      #adhobb {
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        margin: 15px;
+      }
+
+      #hobby {
+        width: 100%;
+      }
+
+      .ele {
+        text-align: left;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <img src="myAvatar.png" alt="MoheyMandour" />
+      <p id="name">MoheyMandour</p>
+      <p>Frontend Developer</p>
+
+      <ul id="hobby"></ul>
+
+      <button id="edname">Edit Name</button>
+      <button id="chcolor">Change Color</button>
+      <br />
+      <button id="adhobb">Add Hobby</button>
+    </div>
+    <script>
+      var colors = [
+        "green",
+        "black",
+        "blue",
+        "red",
+        "brown",
+        "violet",
+        "orange",
+      ];
+      var maincolor = document.getElementById("container");
+      var edname = document.getElementById("edname");
+      var chcolor = document.getElementById("chcolor");
+      var adhobb = document.getElementById("adhobb");
+      var mainname = document.getElementById("name");
+      var listhobbies = document.getElementById("hobby");
+
+      edname.addEventListener("click", function () {
+        edited = prompt("What name you want?");
+
+        if (edited !== null && edited.trim() !== "") {
+          mainname.textContent = edited;
+        }
+      });
+
+      chcolor.addEventListener("click", function () {
+        var changed = Math.floor(Math.random() * colors.length);
+        maincolor.style.backgroundColor = colors[changed];
+      });
+
+      adhobb.addEventListener("click", function () {
+        var enterhobby = prompt("What is Your hobbies?");
+
+        var list = document.createElement("li");
+
+        list.className = "ele";
+
+        list.textContent = enterhobby;
+        listhobbies.appendChild(list);
+      });
+    </script>
+  </body>
+</html>

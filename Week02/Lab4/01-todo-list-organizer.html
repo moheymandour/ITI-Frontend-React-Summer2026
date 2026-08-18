@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #container {
+        /* background-color: aqua; */
+        width: 900px;
+        height: 500px;
+        margin: 50px auto;
+        text-align: center;
+        font-family: sans-serif;
+      }
+
+      h1 {
+        color: brown;
+      }
+      #input {
+        width: 700px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 2px 5px 5px rgb(0, 0, 0, 0.2);
+        margin-right: 20px;
+        margin-bottom: 20px;
+      }
+
+      #adbtn {
+        background-color: gray;
+        border: none;
+        border-radius: 10px;
+        padding: 10px 30px;
+        color: white;
+      }
+
+      table {
+        width: 100%;
+      }
+      tr {
+        background-color: red;
+        color: white;
+        font-weight: bold;
+      }
+      tbody tr td {
+        color: brown;
+      }
+      tbody tr:nth-child(even) {
+        background-color: beige;
+      }
+      tbody tr:nth-child(odd) {
+        background-color: rgba(245, 245, 220, 0.379);
+      }
+
+      .delbtn {
+        color: brown;
+        border: none;
+        background-color: none;
+        border-radius: 10px;
+        font-weight: bold;
+      }
+
+      .cellTask.done {
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div>
+        <h1>To Do Organizer</h1>
+      </div>
+      <div>
+        <input type="text" id="input" />
+        <button id="adbtn">Add</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <td>Done</td>
+            <td>Task</td>
+            <td>Delete</td>
+          </tr>
+        </thead>
+        <tbody id="tasksList"></tbody>
+      </table>
+    </div>
+    <script>
+      var input = document.getElementById("input");
+      var btn = document.getElementById("adbtn");
+      var tasksList = document.getElementById("tasksList");
+
+      function activebtn() {
+        if (input.value.trim() !== "") {
+          adbtn.style.backgroundColor = "rgb(0, 145, 255)";
+        } else {
+          adbtn.style.backgroundColor = "gray";
+        }
+      }
+
+      input.addEventListener("input", activebtn);
+
+      function addTask() {
+        var taskValue = input.value.trim();
+        if (taskValue === "") {
+          return;
+        }
+        var rowTask = document.createElement("tr");
+        // ======================================================
+        var cellcheck = document.createElement("td");
+        var checkTask = document.createElement("input");
+        checkTask.type = "checkbox";
+        cellcheck.appendChild(checkTask);
+
+        // ============================================
+        var cellTask = document.createElement("td");
+        cellTask.className = "cellTask";
+        cellTask.textContent = taskValue;
+        // ============================================
+
+        var delcell = document.createElement("td");
+        var delbtn = document.createElement("button");
+        delbtn.className = "delbtn";
+        delbtn.textContent = "Delete";
+        delcell.appendChild(delbtn);
+
+        rowTask.appendChild(cellcheck);
+        rowTask.appendChild(cellTask);
+        rowTask.appendChild(delcell);
+        tasksList.appendChild(rowTask);
+
+        checkTask.addEventListener("change", function () {
+          cellTask.classList.toggle("done", checkTask.checked);
+        });
+
+        delbtn.addEventListener("click", function () {
+          var confirmDel = confirm("Are you sure to delete it?");
+          if (confirmDel) {
+            tasksList.removeChild(rowTask);
+          }
+        });
+
+        input.value = "";
+        activebtn();
+        input.focus();
+      }
+      adbtn.addEventListener("click", addTask);
+
+      input.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          addTask();
+        }
+      });
+    </script>
+  </body>
+</html>

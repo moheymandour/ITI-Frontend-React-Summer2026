@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var userName = prompt("Enter your UserName: ");
+      var userPassword = prompt("Enter your Password: ");
+      if (userName === "" || userPassword === "") {
+        alert("All fields are required!");
+      } else if (userName === "admin" && userPassword === "1234") {
+        alert("Welcome back, admin!");
+      } else {
+        alert("Incorrect credentials.");
+      }
+    </script>
+  </body>
+</html>

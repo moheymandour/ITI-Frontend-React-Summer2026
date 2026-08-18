@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var ques = prompt("Enter array value: ");
+      var splques = ques.split(",");
+      var numarr = splques.map(function (values) {
+        return Number(values);
+      });
+
+      var rep = false;
+      for (var i = 0; i < numarr.length; i++) {
+        for (var j = 0; j < i; j++) {
+          if (numarr[i] === numarr[j]) {
+            alert(
+              "There are repeated values with rows numbers\n" +
+                "repeated row number: " +
+                (j + 1) +
+                "\n" +
+                "row number: " +
+                (i + 1),
+            );
+            rep = true;
+            break;
+          }
+        }
+        if (rep === true) break;
+      }
+      if (!rep) {
+        alert(numarr);
+      }
+    </script>
+  </body>
+</html>

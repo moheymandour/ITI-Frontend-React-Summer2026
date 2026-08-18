@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      document.write("<table border='1' cellpadding='25px'> ");
+      /* style= 'border:5px solid red; padding: 10px; background-color: green; color: blue;'*/
+      var count = 0;
+      for (var i = 1; i <= 30; i++) {
+        if (i % 2 == 0) {
+          if (count % 5 === 0) {
+            document.write("<tr>");
+          }
+          document.write("<td>" + i + "</td>");
+          count++;
+
+          if (count % 5 === 0) {
+            document.write("</tr>");
+          }
+        }
+      }
+      document.write("</table>");
+    </script>
+  </body>
+</html>

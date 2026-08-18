@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var numProducts = Number(
+        prompt("How many products you want yo add? (minimum 3)"),
+      );
+
+      while (isNaN(numProducts) || numProducts < 3) {
+        var numProducts = Number(
+          prompt("Invaild! Please Enter a valide number (minimum 3)"),
+        );
+      }
+
+      var productsarr = [];
+
+      for (var i = 0; i < numProducts; i++) {
+        var name = prompt("Enter name of product " + (i + 1) + ": ");
+        while (name === null || name === "") {
+          name = prompt(
+            "Invalid! Please a valid name of product " + (i + 1) + ": ",
+          );
+        }
+
+        var quantity = Number(
+          prompt("Enter quantity of product " + (i + 1) + ": "),
+        );
+        while (isNaN(quantity) || quantity < 0) {
+          quantity = Number(
+            prompt(
+              "Invalid! Please a valid quantity of product " + (i + 1) + ": ",
+            ),
+          );
+        }
+
+        var price = Number(prompt("Enter price of product " + (i + 1) + ": "));
+        while (price < 0 || isNaN(price)) {
+          price = Number(
+            prompt(
+              "Invalid! Please a valid price of product " + (i + 1) + ": ",
+            ),
+          );
+        }
+
+        var total = price * quantity;
+
+        var storeproduct = {
+          name: name,
+          quantity: quantity,
+          price: price,
+          total: total,
+        };
+
+        productsarr.push(storeproduct);
+      }
+
+      document.write("<table border='1'>");
+      document.write(
+        "<tr><th>Name</th><th>Qunatity</th><th>Price</th><th>Total Price</th></tr>",
+      );
+
+      var totalInventoryValue = 0;
+
+      for (var i = 0; i < productsarr.length; i++) {
+        document.write(
+          "<tr>" +
+            "<td>" +
+            productsarr[i].name +
+            "</td>" +
+            "<td>" +
+            productsarr[i].quantity +
+            "</td>" +
+            "<td>" +
+            productsarr[i].price +
+            "</td>" +
+            "<td>" +
+            productsarr[i].total +
+            "</td>" +
+            "</tr>",
+        );
+        totalInventoryValue += productsarr[i].total;
+      }
+      document.write("</table>");
+
+      document.write(
+        "<h3>Total Inventory Value: " + totalInventoryValue + "</h3>",
+      );
+    </script>
+  </body>
+</html>
