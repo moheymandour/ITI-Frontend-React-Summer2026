@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post & Author Info Viewer</title>
+  </head>
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: white;
+    }
+
+    #container {
+      margin: 30px;
+      text-align: center;
+      font-family: sans-serif;
+    }
+
+    #head {
+      font-size: 35px;
+      margin: 20px;
+    }
+
+    #postId {
+      width: 600px;
+      height: 40px;
+      padding: 10px;
+      border: 1px solid gray;
+      border-radius: 10px 0 0 10px;
+      margin-right: 0;
+    }
+    #load,
+    #not {
+      display: none;
+    }
+
+    #not p {
+      background-color: rgb(218, 156, 156);
+      margin: 20px auto;
+      color: red;
+      width: 80%;
+      padding: 20px 0px;
+    }
+
+    #postId:focus {
+      outline: 5px solid rgba(0, 179, 255, 0.3);
+    }
+    #fetchbtn {
+      background-color: rgb(0, 128, 55);
+      color: white;
+      padding: 10px 20px;
+      margin-left: 0;
+      border: none;
+      border-radius: 0 10px 10px 0;
+    }
+
+    #postTitle {
+      font-size: 23px;
+      margin-bottom: 10px;
+    }
+    #postBody {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    #authorInfo,
+    #conpos {
+      display: none;
+      border: 1px solid lightgray;
+      border-radius: 5px;
+      text-align: left;
+      margin: 20px;
+      padding: 20px;
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+      line-height: 2;
+    }
+  </style>
+  <body>
+    <div id="container">
+      <p id="head">
+        <img src="post-icon.png" width="40px" height="40px" />Post & Author Info
+      </p>
+
+      <input type="number" id="postId" placeholder="Enter Post ID(1-100)" />
+      <button id="fetchbtn">Fetch</button>
+      <div id="conpos">
+        <p id="postTitle"></p>
+        <p id="postBody"></p>
+      </div>
+      <div id="not"><p>Post not Found</p></div>
+
+      <p id="load">Loading author info...</p>
+      <div id="authorInfo"></div>
+    </div>
+    <script>
+      const postIdInput = document.getElementById("postId");
+      const fetchBtn = document.getElementById("fetchbtn");
+      const postTitle = document.getElementById("postTitle");
+      const postBody = document.getElementById("postBody");
+      const authorInfo = document.getElementById("authorInfo");
+      const notpost = document.getElementById("not");
+
+      async function fetchPostInfo() {
+        const posid = postIdInput.value;
+
+        if (!posid || posid.trim() === "" || posid < 1 || posid > 100) {
+          not.style.display = "block";
+          load.style.display = "none";
+          authorInfo.style.display = "none";
+          conpos.style.display = "none";
+          return;
+        }
+
+        try {
+          const posts = await fetch(
+            `https://jsonplaceholder.typicode.com/posts/${posid}`,
+          );
+          const postsData = await posts.json();
+          postTitle.innerHTML = `
+          📝PostTitle:
+        <br>
+        ${postsData.title}
+        `;
+
+          postBody.innerHTML = `
+        PostBody:
+        <br>
+        ${postsData.body}
+        `;
+
+          const userid = postsData.userId;
+          const users = await fetch(
+            `https://jsonplaceholder.typicode.com/users/${userid}`,
+          );
+          const usersinfo = await users.json();
+
+          authorInfo.innerHTML = `
+        👤Author Info:
+        <br>
+        <b>Name:</b>${usersinfo.name}
+        <br>
+        <b>Email:</b>${usersinfo.email}
+        <br>
+        <b>City:</b>${usersinfo.address.city}
+        <br>
+        `;
+
+          load.style.display = "block";
+          authorInfo.style.display = "block";
+          conpos.style.display = "block";
+          notpost.style.display = "none";
+        } catch (error) {
+          alert(
+            "Oops! An error occurred while fetching data. Please try again",
+          );
+        }
+      }
+
+      fetchBtn.addEventListener("click", fetchPostInfo);
+    </script>
+  </body>
+</html>

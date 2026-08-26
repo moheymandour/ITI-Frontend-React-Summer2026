@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spread, Rest Parameters & this Keyword</title>
+  </head>
+  <body>
+    <script>
+      //=================               PrevLab         ============================>
+      let nums = [1, 5, 20, 60, 90, 30, 5];
+      let max = Math.max(...nums);
+      let min = Math.min(...nums);
+      console.log(`Max Value: ${max}`);
+      console.log(`Min Value: ${min}`);
+
+      // ============================================>
+      function operations(operator, ...nums) {
+        let resoperation;
+
+        switch (operator) {
+          case "sum":
+            resoperation = nums.reduce((x, y) => x + y);
+            break;
+          case "sub":
+            resoperation = nums.reduce((x, y) => x - y);
+            break;
+          case "mul":
+            resoperation = nums.reduce((x, y) => x * y);
+            break;
+          case "div":
+            resoperation = nums.reduce((x, y) => x / y);
+            break;
+          default:
+            resoperation = "Invalid Operator";
+        }
+
+        console.log(
+          `Result of ${operator} operation for ${nums} is ${resoperation}`,
+        );
+      }
+
+      operations("sum", ...nums);
+      operations("sub", ...nums);
+      operations("mul", ...nums);
+      operations("div", ...nums);
+
+      // =====================               Curr Lab            =======================>
+
+      function global() {
+        console.log("Global fun : ", this); //=> window
+
+        //"use strict" = > undefined
+      }
+      global();
+
+      const m = {
+        name: "mohey",
+        fun: function () {
+          console.log("fun: ", this);
+        },
+      };
+      const x = {
+        age: 20,
+        arrfun: () => {
+          console.log("arrow: ", this);
+        },
+      };
+
+      x.arrfun();
+      m.fun();
+    </script>
+  </body>
+</html>

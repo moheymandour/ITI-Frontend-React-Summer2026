@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users List - Fetch API</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+      body {
+        background-color: white;
+      }
+      #container {
+        text-align: center;
+        margin: 20px;
+      }
+      #head {
+        font-weight: normal;
+        font-size: 45px;
+        color: rgb(32, 32, 32);
+      }
+      h3 {
+        font-weight: 350;
+        font-size: 25px;
+        color: rgb(32, 32, 32);
+      }
+      #loadUsers {
+        color: white;
+        background-color: rgb(0, 106, 255);
+        padding: 10px 25px;
+        border: none;
+        border-radius: 5px;
+        margin: 30px;
+        cursor: pointer;
+      }
+
+      ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        justify-content: center;
+        gap: 20px;
+        text-align: left;
+      }
+      ul .onelist {
+        list-style: none;
+        background-color: white;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        width: 500px;
+        margin: 10px;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+        padding: 15px;
+        line-height: 2;
+      }
+
+      ul .onelist:hover {
+        box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.1);
+        border: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1 id="head">Users List</h1>
+      <button id="loadUsers">Load Users</button>
+    </div>
+    <div id="conlist">
+      <ul id="usersList"></ul>
+    </div>
+
+    <script>
+      async function loadusers() {
+        const res = await fetch("https://jsonplaceholder.typicode.com/users");
+        const datausers = await res.json();
+
+        const userslist = document.getElementById("usersList");
+
+        userslist.innerHTML = "";
+
+        datausers.forEach((user) => {
+          const userbox = document.createElement("li");
+
+          userbox.className = "onelist";
+          userbox.innerHTML = `
+
+          <h3>${user.name}</h3>
+          <strong>Email:</strong> ${user.email}<br>
+          <strong>Phone:</strong> ${user.phone}<br>
+          <strong>WebSite:</strong><a href="http://${user.website}" target="_blank"> ${user.website}</a><br>
+          <strong>Company:</strong> ${user.company.name}<br>
+          <strong>City:</strong> ${user.address.city}<br>
+          <strong>Address:</strong> ${user.address.street},${user.address.suite},${user.address.city},${user.address.zipcode}
+          `;
+
+          userslist.appendChild(userbox);
+        });
+      }
+      document.getElementById("loadUsers").addEventListener("click", loadusers);
+    </script>
+  </body>
+</html>

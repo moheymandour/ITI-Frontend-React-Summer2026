@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Closures Example</title>
+  </head>
+  <body>
+    <script>
+      function outer() {
+        let x = 10;
+        function inner() {
+          return x + 5;
+        }
+        // x = 30; ==> result = 35
+        return inner;
+      }
+
+      const closureFun = outer();
+
+      console.log("result: ", closureFun());
+    </script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array Methods & Function Arguments</title>
+  </head>
+  <body>
+    <script>
+      let arr = [100, 40, 50, 90, 120, 10, 30, 80, 70, 60, 20, 110];
+
+      let ascarr = arr.slice().sort((x, y) => x - y);
+      let desarr = arr.slice().sort((x, y) => y - x);
+      let filarr = arr.filter((x) => x > 50);
+
+      let maxValue = arr.reduce((x, y) => (x > y ? x : y));
+      let minValue = arr.reduce((x, y) => (x < y ? x : y));
+
+      function operations(operator) {
+        let num = [];
+        for (let i = 1; i < arguments.length; i++) {
+          num.push(arguments[i]);
+        }
+
+        let ressum = 0;
+        switch (operator) {
+          case "sum":
+            ressum = num.reduce((prev, curr) => prev + curr);
+            break;
+          case "sub":
+            ressum = num.reduce((prev, curr) => prev - curr);
+            break;
+          case "mul":
+            ressum = num.reduce((prev, curr) => prev * curr);
+            break;
+          case "div":
+            ressum = num.reduce((prev, curr) => prev / curr);
+            break;
+        }
+        console.log(`result of ${operator} operation for ${num} is ${ressum}`);
+      }
+
+      let id = prompt("Enter projectID: ");
+      let names = prompt("Enter projectNames: ");
+      let dur = prompt("Enter duration : ");
+
+      const project = {
+        projectname: names,
+        projectid: id,
+        duration: dur,
+
+        printData() {
+          console.log(
+            `projectName: ${this.projectname} ,projectId: ${this.projectid},  duration: ${this.duration} `,
+          );
+        },
+      };
+
+      console.log(`Ascending order: ${ascarr}`);
+      console.log(`Descending order: ${desarr}`);
+      console.log(`Filtered array > 50: ${filarr}`);
+      console.log(`Maximum value: ${maxValue}`);
+      console.log(`Minimum value: ${minValue}`);
+
+      operations("sum", 100, 40, 50, 90, 120);
+      operations("sub", 100, 40, 50, 90, 120);
+      operations("mul", 100, 40, 50, 90, 120);
+      operations("div", 100, 40, 50, 90, 120);
+      project.printData();
+    </script>
+  </body>
+</html>

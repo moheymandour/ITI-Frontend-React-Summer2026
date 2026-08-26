@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arguments Object vs Rest Parameters</title>
+  </head>
+  <body>
+    <script>
+      function arg() {
+        console.log("argunments: ", arguments);
+
+        let arrArgument = Array.from(arguments);
+        console.log("ArrayArgument: ", arrArgument);
+
+        let argSpread = [...arguments];
+        console.log("ArraySpread: ", argSpread);
+      }
+      arg(10, 20, 30, 40, 50);
+
+      //=============================================>
+
+      function arg2(...arg) {
+        console.log("ArgRest: ", arguments);
+      }
+      arg2(10, 20, 30, 40, 50);
+
+      //=============================================>
+
+      const arrowarg = () => {
+        console.log("ArrowArg: ", arguments);
+      };
+      arrowarg(10, 20, 30, 40, 50);
+    </script>
+  </body>
+</html>
