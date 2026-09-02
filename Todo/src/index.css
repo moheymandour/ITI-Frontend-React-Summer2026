@@ -1,0 +1,177 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #fafafa;
+  color: #333;
+}
+
+.todo-container {
+  width: 90%;
+  max-width: 700px;
+  margin: 70px auto;
+}
+
+.todo-container h1 {
+  margin-bottom: 30px;
+  letter-spacing: 8px;
+  font-size: 35px;
+}
+
+.todo-box {
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* INPUT */
+
+.input-task {
+  height: 65px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.circle {
+  width: 22px;
+  height: 22px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.input-task input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 16px;
+}
+
+/* TASK */
+
+.task {
+  min-height: 65px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.task-circle {
+  width: 22px;
+  height: 22px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  margin-right: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.task-circle.checked {
+  background: #6c63ff;
+  color: white;
+  border-color: #6c63ff;
+}
+
+.task-text {
+  font-size: 16px;
+  flex: 1;
+}
+
+.task-text.done {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
+/* DELETE */
+
+.delete-btn {
+  border: none;
+  background: transparent;
+  font-size: 25px;
+  color: #aaa;
+  cursor: pointer;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: 0.2s;
+}
+
+.task:hover .delete-btn {
+  opacity: 1;
+  visibility: visible;
+}
+
+.delete-btn:hover {
+  color: #333;
+}
+
+/* FOOTER */
+
+.footer {
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-size: 13px;
+  color: #777;
+}
+
+.filters {
+  display: flex;
+  gap: 15px;
+}
+
+.filters button,
+.clear-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #777;
+}
+
+.filters button:hover,
+.clear-btn:hover {
+  color: #333;
+}
+
+.filters button.active {
+  color: #6c63ff;
+  font-weight: bold;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .todo-container {
+    width: 94%;
+    margin-top: 40px;
+  }
+
+  .footer {
+    gap: 15px;
+    flex-wrap: wrap;
+    height: auto;
+    padding: 20px;
+  }
+
+  .filters {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+  }
+}
