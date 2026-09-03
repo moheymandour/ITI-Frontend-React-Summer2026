@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    #main {
+      width: 80vw;
+      height: 80vh;
+      margin: 20px auto;
+    }
+
+    #content {
+      width: 80vw;
+      height: 80vh;
+      margin: 50px auto;
+
+      display: flex;
+      transition:
+        justify-content 1s,
+        align-items 1s;
+    }
+
+    #pro {
+      width: 20vw;
+      height: 20vh;
+      background-color: rgb(237, 125, 49);
+      border: 2px solid rgb(65, 113, 156);
+      transition: background-color 2s;
+    }
+
+    input[type="button"] {
+      background-color: rgb(91, 155, 213);
+      border: 2px solid rgb(65, 113, 156);
+      color: white;
+      padding: 15px 50px;
+      margin: 50px;
+      margin-left: 0px;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <div id="main">
+      <div id="control">
+        <input type="button" value="Start" onclick="startanimation()" />
+        <input type="button" value="Stop" onclick="stopanimation()" />
+      </div>
+      <div id="content">
+        <div id="pro"></div>
+      </div>
+    </div>
+
+    <script>
+      const myanimation = document.getElementById("pro");
+      const mycontent = document.getElementById("content");
+
+      const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+      async function startanimation() {
+        mycontent.style.justifyContent = "center";
+
+        myanimation.style.backgroundColor = "rgb(146, 208, 80)";
+        await wait(2000);
+
+        mycontent.style.alignItems = "center";
+        myanimation.style.backgroundColor = "rgb(0, 176, 240)";
+        await wait(2000);
+
+        mycontent.style.justifyContent = "start";
+        myanimation.style.backgroundColor = "rgb(255, 217, 102)";
+        await wait(2000);
+
+        mycontent.style.alignItems = "start";
+        myanimation.style.backgroundColor = "rgb(237, 125, 49)";
+        await wait(2000);
+      }
+      function stopanimation() {
+        isAnimati;
+        mycontent.style.justifyContent = "start";
+        mycontent.style.alignItems = "start";
+        myanimation.style.backgroundColor = "rgb(237, 125, 49)";
+      }
+    </script>
+  </body>
+</html>

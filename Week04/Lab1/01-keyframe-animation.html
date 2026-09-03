@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    #main {
+      width: 80vw;
+      height: 80vh;
+      margin: 20px auto;
+      position: relative;
+    }
+
+    #pro {
+      width: 20vw;
+      height: 20vh;
+      background-color: rgb(237, 125, 49);
+      border: 2px solid rgb(65, 113, 156);
+      animation-name: changeplace;
+      animation-duration: 10s;
+      animation-iteration-count: infinite;
+      position: absolute;
+      animation-play-state: paused;
+    }
+
+    input[type="button"] {
+      background-color: rgb(91, 155, 213);
+      border: 2px solid rgb(65, 113, 156);
+      color: white;
+      padding: 15px 50px;
+      margin: 50px;
+      margin-left: 0px;
+    }
+
+    @keyframes changeplace {
+      0% {
+        background-color: rgb(237, 125, 49);
+        border: 2px solid rgb(65, 113, 156);
+      }
+      25% {
+        background-color: rgb(146, 208, 80);
+        border: 2px solid rgb(65, 113, 156);
+        left: 25%;
+      }
+      50% {
+        background-color: rgb(0, 176, 240);
+        border: 2px solid rgb(65, 113, 156);
+        top: 50%;
+      }
+      75% {
+        background-color: rgb(255, 217, 102);
+        border: 2px solid rgb(65, 113, 156);
+        right: 75%;
+      }
+    }
+  </style>
+  <body>
+    <div id="main">
+      <div id="content">
+        <div id="control">
+          <input type="button" value="Start" onclick="startanimation()" />
+          <input type="button" value="Stop" onclick="stopanimation()" />
+          <input type="button" value="pause" onclick="pauseanimation()" />
+        </div>
+        <div id="pro"></div>
+      </div>
+    </div>
+
+    <script>
+      const myanimation = document.getElementById("pro");
+      function startanimation() {
+        myanimation.style.animationPlayState = "running";
+      }
+      function pauseanimation() {
+        myanimation.style.animationPlayState = "paused";
+      }
+      function stopanimation() {
+        myanimation.style.animationIterationCount = "0";
+      }
+    </script>
+  </body>
+</html>

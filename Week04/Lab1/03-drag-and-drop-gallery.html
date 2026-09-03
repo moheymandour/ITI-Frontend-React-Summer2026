@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    #container {
+      background-color: bisque;
+      width: 80%;
+      height: auto;
+      margin: 20px auto;
+    }
+
+    #drop {
+      border: 1px solid gray;
+
+      height: auto;
+      padding: 50px;
+      text-align: center;
+    }
+    #bridge {
+      border: 1px solid gray;
+
+      height: 20vh;
+    }
+    #drag {
+      border: 1px solid gray;
+      height: auto;
+      padding: 40px;
+      text-align: center;
+    }
+
+    #drag img,
+    #drop img {
+      width: 140px;
+      height: 160px;
+      transition: transform 0.4s;
+    }
+
+    #drag img:hover {
+      transform: rotate(360deg);
+    }
+  </style>
+  <script>
+    window.addEventListener("load", function () {
+      mydrop = document.getElementById("drop");
+      mydrop.addEventListener("drop", droped);
+      mydrop.addEventListener("dragenter", enterdrag);
+      mydrop.addEventListener("dragover", overdrag);
+      mydrop.addEventListener("dragleave", leavedrag);
+
+      mydrag = document.getElementById("drag");
+
+      allimg = document.images;
+      for (let i = 0; i < allimg.length; i++) {
+        allimg[i].addEventListener("dragstart", startdrag);
+        allimg[i].addEventListener("dragend", enddrag);
+      }
+    });
+
+    function startdrag(e) {
+      e.dataTransfer.setData("myimg", e.target.outerHTML);
+    }
+    function enddrag(e) {
+      e.target.remove();
+      if (mydrag.getElementsByTagName("img").length === 0) {
+        mydrag.style.backgroundColor = "lightgreen";
+        mydrag.style.color = "red";
+        mydrag.innerHTML = "This Counter is empty";
+      }
+    }
+    function droped(e) {
+      e.preventDefault();
+      mydrop.innerHTML += e.dataTransfer.getData("myimg");
+    }
+
+    function overdrag(e) {
+      e.preventDefault();
+    }
+    function leavedrag(e) {
+      e.preventDefault();
+    }
+    function enterdrag(e) {
+      e.preventDefault();
+      mydrop.style.backgroundColor = "yellow";
+    }
+  </script>
+  <body>
+    <div id="container">
+      <section id="drop"></section>
+
+      <section id="bridge"></section>
+
+      <section id="drag">
+        <img src="1.jpg" alt="" />
+        <img src="2.jpg" alt="" />
+        <img src="3.jpg" alt="" />
+        <img src="4.jpg" alt="" />
+        <img src="5.jpg" alt="" />
+        <img src="6.jpg" alt="" />
+        <img src="7.jpg" alt="" />
+        <img src="8.jpg" alt="" />
+      </section>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Video Player</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+      background-color: rgb(15, 23, 42);
+    }
+    #main {
+      background-color: rgb(30, 41, 59);
+      width: 55%;
+      margin: 20px auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      border-radius: 10px;
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    h1 {
+      color: white;
+      font-size: 30px;
+      margin: 20px;
+    }
+
+    #vidviewer > #myVideo {
+      border-radius: 15px;
+      width: 95%;
+      height: auto;
+    }
+
+    #edit {
+      margin: 20px;
+    }
+    input:nth-child(-n + 9) {
+      background-color: rgb(37, 99, 235);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 15px;
+      margin: 5px;
+    }
+
+    #rangVideo {
+      text-align: left;
+    }
+    #rangVideo > label {
+      padding: 15px;
+      color: white;
+    }
+
+    input[type="range"] {
+      width: 95%;
+      height: 5px;
+      margin: 20px;
+      accent-color: rgb(234, 8, 8);
+    }
+    #sizeVideo {
+      margin: 10px;
+    }
+
+    @media (min-width: 768) and (max-width: 1660px) {
+      video {
+        max-width: 600px;
+        height: auto;
+      }
+    }
+  </style>
+  <body>
+    <section id="main">
+      <h1>🎬Modern Video Player</h1>
+      <section id="vidviewer">
+        <video src="demo-video.mp4" id="myVideo"></video>
+      </section>
+      <section id="edit">
+        <input type="button" value="▶ play" onclick="playVideo()" />
+        <input type="button" value="⏸pause" onclick="pauseVideo()" />
+        <input type="button" value="⏹ stop" onclick="stopVideo()" />
+        <input type="button" value="🔇mute" onclick="muteVideo()" />
+        <input type="button" value="🔄 loop" onclick="loopVideo()" />
+        <input type="button" value="🖵 fullscreen" onclick="fullScreenVideo()" />
+        <input type="button" value="0.5x" onclick="speedHalfVideo()" />
+        <input type="button" value="1x" onclick="speedOneVideo()" />
+        <input type="button" value="2x" onclick="speedTwoVideo()" />
+      </section>
+      <section id="rangVideo">
+        <label for="vol">Volume</label>
+        <br />
+        <input
+          type="range"
+          onchange="changeVol(event)"
+          min="0"
+          max="1"
+          step="0.1"
+          value="0.5"
+          id="vol"
+        />
+        <br />
+        <label for="range">Progress</label>
+        <br />
+        <input
+          type="range"
+          id="rangeprogress"
+          value="0"
+          onchange="progressbar(event)"
+          min="0"
+          step="1"
+        />
+      </section>
+      <section id="sizeVideo">
+        <input type="button" value="Small" onclick="changesizesmall()" />
+        <input type="button" value="Medium" onclick="changesizemedium()" />
+        <input type="button" value="Large" onclick="changesizelarge()" />
+        <input type="button" value="normal" onclick="changesizenormal()" />
+      </section>
+    </section>
+
+    <script>
+      const myvideo = document.getElementById("myVideo");
+
+      // function progressbar(e) {
+      //   e.target.max = myvideo.duration;
+      //   myvideo.currentTime = e.target.value;
+      // دي  انا اللي عاملها بس ناقصه ازاي اخلي ال Bar
+      // يمشي مع الفيديو
+      // }
+
+      myvideo.addEventListener("timeupdate", function () {
+        const progress = document.getElementById("rangeprogress"); // دي AI
+        progress.max = myvideo.duration;
+        progress.value = myvideo.currentTime;
+      });
+
+      function progressbar(e) {
+        myvideo.currentTime = e.target.value;
+      }
+
+      function playVideo() {
+        myvideo.play();
+      }
+      function pauseVideo() {
+        myvideo.pause();
+      }
+
+      function stopVideo() {
+        myvideo.currentTime = 0;
+        myvideo.pause();
+      }
+
+      function muteVideo() {
+        if (myvideo.muted) {
+          myvideo.muted = false;
+        } else {
+          myvideo.muted = true;
+        }
+      }
+      function loopVideo() {
+        if (myvideo.loop) {
+          myvideo.loop = false;
+        } else {
+          myvideo.loop = true;
+        }
+      }
+      function fullScreenVideo() {
+        myvideo.requestFullscreen();
+      }
+      function speedHalfVideo() {
+        myvideo.playbackRate = 0.5;
+      }
+      function speedOneVideo() {
+        myvideo.playbackRate = 1;
+      }
+      function speedTwoVideo() {
+        myvideo.playbackRate = 2;
+      }
+      function changeVol(e) {
+        myvideo.volume = e.target.value;
+        if (myvideo.volume > 0) {
+          myvideo.muted = false;
+        }
+      }
+
+      function changesizesmall() {
+        myvideo.width = myvideo.height = 400;
+      }
+      function changesizemedium() {
+        myvideo.width = myvideo.height = 500;
+      }
+
+      function changesizelarge() {
+        myvideo.width = myvideo.height = 600;
+      }
+      function changesizenormal() {
+        myvideo.width = 900;
+        myvideo.height = 500;
+      }
+    </script>
+  </body>
+</html>
